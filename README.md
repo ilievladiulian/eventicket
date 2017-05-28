@@ -9,6 +9,16 @@ Simple ticketing application for events in Java (Spring, Hibernate)
 ## How to use it?
 1. POST to localhost:8080/tickets/create_ticket with the fields of a ticket (id - may be null, event (id, title - may be null, date - may be null, location - may be null), price, holder) in JSON format inserts a ticket in the database and returns a response in JSON format with the newly created ticket.
 
+Example:
+{
+	"id": null,
+	"event": {
+		"id": 3
+	},
+	"price": 59.99,
+	"holder": "XYZ"
+}
+
 2. POST to localhost:8080/tickets/delete_ticket with the id of the ticket as parameter deletes the ticket from the database (returns true if the ticket exists, false if not).
 
 3. GET to localhost:8080/tickets/ticket_details/{id} (with the id of the ticket in the url path) shows the details of the ticket in JSON format.
