@@ -1,6 +1,6 @@
 package ilievladiulian.eventicket.tickets.model;
 
-import ilievladiulian.eventicket.events.Event;
+import ilievladiulian.eventicket.events.model.Event;
 
 import javax.persistence.*;
 
@@ -18,6 +18,7 @@ public class Ticket {
     private Event event;
 
     private double price;
+    private String holder;
 
     public Ticket() {
     }
@@ -44,5 +45,13 @@ public class Ticket {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public String getHolder() {
+        return holder;
+    }
+
+    public void setHolder(String holder) {
+        this.holder = holder;
     }
 }

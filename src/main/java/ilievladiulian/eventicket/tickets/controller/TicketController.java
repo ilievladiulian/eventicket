@@ -8,35 +8,30 @@ import ilievladiulian.eventicket.tickets.model.Ticket;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
 
 @RestController
 public class TicketController {
 
     private final TicketService ticketService;
 
-    private List<Ticket> ticketList = new ArrayList<>();
-
     @Autowired
     public TicketController(TicketService ticketService) {
         this.ticketService = ticketService;
     }
 
-    @RequestMapping(value = "/tickets/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/tickets/ticket_details/{id}", method = RequestMethod.GET)
     public Ticket getTicketDetails(@PathVariable(name = "id") long id) {
         return ticketService.getTicket(id);
     }
 
-    @RequestMapping(value = "/tickets", method=RequestMethod.POST)
+    @RequestMapping(value = "/tickets/buy_ticket", method=RequestMethod.POST)
     public Ticket createTicket(@RequestBody Ticket ticket) {
         return ticketService.createTicket(ticket);
     }
 
-    @RequestMapping(value = "/cancel_ticket", method=RequestMethod.POST)
-    public boolean cancelTicket(@RequestParam(value = "price", defaultValue = "0.00") double price, @RequestParam(value = "event_id", defaultValue = "0") long eventID) {
-        return false;
+    @RequestMapping(value = "/tickets/cancel_ticket", method=RequestMethod.POST)
+    public boolean cancelTicket(@RequestParam(value = "id") long id) {
+        return ticketService.deleteTicket(id);
     }
 
 }

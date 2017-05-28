@@ -28,4 +28,13 @@ public class SimpleTicketService implements TicketService {
     public Ticket createTicket(Ticket ticket) {
         return ticketRepository.save(ticket);
     }
+
+    @Override
+    public boolean deleteTicket(long id) {
+        if (ticketRepository.exists(id)) {
+            ticketRepository.delete(id);
+            return true;
+        }
+        return false;
+    }
 }

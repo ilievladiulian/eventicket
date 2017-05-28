@@ -9,4 +9,6 @@ public interface TicketService {
     Ticket getTicket(long id);
 
     Ticket createTicket(Ticket ticket);
+
+    boolean deleteTicket(long id);
 }
